@@ -2,6 +2,11 @@
 Program that uses LSH and HyperCube method to find nearest neighbors
 
 
+**Input and query datasets**
+
+Each line contains a vector-point and each coordianate is diveided by spaces. The first number is the id of the vector-point.
+
+
 **Locality Sensitive Hashing (LSH)**
 
 Locality Sensitive Hashing is an algorithmic technique that hashes similar input items into the same buckets with high probability. The layers in which this algorithm is implemented are the following:
@@ -45,7 +50,9 @@ Locality Sensitive Hashing is an algorithmic technique that hashes similar input
   **Compile & Run**
 
 A makefile is included in the repository. To compile just hit $ make . To delete the lsh binary file run $ make clean.
-All of the parameters can be configured with command line arguments. To execute you can use $ ./lsh -i <input_dataset> -q <query_dataset> -k <no_of_hash_functions> -L <no_of_hash_tables> -o <output_file_name> -N <number of nearest> -R <radius for range search>. There are default values (you may not provide them as arguments) for k (4), L (5), N (1), R(10000)
+All of the parameters can be configured with command line arguments.
+
+To execute you can use $ ./lsh -i <input_dataset> -q <query_dataset> -k <no_of_hash_functions> -L <no_of_hash_tables> -o <output_file_name> -N <number of nearest> -R <radius for range search>. There are default values (you may not provide them as arguments) for k (4), L (5), N (1), R(10000)
   
   
   **Projection in Hypercube**
@@ -64,4 +71,6 @@ Randomized projection into Hypercube is a similar algorithmic technique to LSH. 
   **Compile & Run**
 
 A makefile is included in the repository. To compile just hit $ make . To delete the lsh binary file run $ make clean.
-All of the parameters can be configured with command line arguments. To execute you can use $ ./lsh -d <input_dataset> -q <query_dataset> -k <no_of_hash_functions> -M <max_number_of_points_to_be_checked> -probes <max_number_of_probes_to_be_checked> -o <output_file_name> -N <number of nearest> -R <radius>. There are default values (you may not provide them as arguments) for k (4), M (10), probes (2), N(1), R(10000)  
+All of the parameters can be configured with command line arguments. 
+  
+  To execute you can use $ ./lsh -d <input_dataset> -q <query_dataset> -k <no_of_hash_functions> -M <max_number_of_points_to_be_checked> -probes <max_number_of_probes_to_be_checked> -o <output_file_name> -N <number of nearest> -R <radius>. There are default values (you may not provide them as arguments) for k (4), M (10), probes (2), N(1), R(10000)  
