@@ -19,29 +19,32 @@ Locality Sensitive Hashing is an algorithmic technique that hashes similar input
   h(p) = floor ((p*v + t)/w))
 
 
-2)AmplifiedHashFunction: This function is called an amplified hash function as it "combines" k HashFunction instances to form a new (amplified) hash function.
-Specifically, on creation, k HashFunction objects are initialized. When an item needs to be hashed, it gets hashed by all k of those hash functions, in the end, the results get concatenated bitwise to produce the "final" hash.
+  2)AmplifiedHashFunction: This function is called an amplified hash function as it "combines" k HashFunction instances to form a new (amplified) hash function.
+  Specifically, on creation, k HashFunction objects are initialized. When an item needs to be hashed, it gets hashed by all k of those hash functions, in the end,   the results get concatenated bitwise to produce the "final" hash.
 
-g(p) =  [(r1h1(p) + r2h2(p) + · · · + rkhk (p)) mod M] mod TableSize where r is a random vector
-
-
-3)LSH: It contains L hash tables (so L AmplifieadHashFunctions) and whenever an item is inserted, it is added for each hash table into its respective bucket.
-To summarize, when LSH is initialized, we have L hash tables where each one contains one instance of each of our items. Whenever a query item arrives, we hash it for every hash table and search for its nearest neighbors among the L buckets (one from each hash table).
-
-Querying trick
-
-For every p, store
-
-ID(p) = r1h1(p) + r2h2(p) + · · · + rkhk (p) mod M.
-
-Then indexing hash-function is g(p) = ID(p) mod TableSize.
-
-ID is locality sensitive: depends on w-length cells on the v-lines.
-
-Avoid computing Euclidean distance to all elements p in bucket; do it only for p: ID(p) =ID(q)
+  g(p) =  [(r1h1(p) + r2h2(p) + · · · + rkhk (p)) mod M] mod TableSize where r is a random vector
 
 
-Projection in Hypercube
+  3)LSH: It contains L hash tables (so L AmplifieadHashFunctions) and whenever an item is inserted, it is added for each hash table into its respective bucket.
+  To summarize, when LSH is initialized, we have L hash tables where each one contains one instance of each of our items. Whenever a query item arrives, we hash     it for every hash table and search for its nearest neighbors among the L buckets (one from each hash table).
+
+  Querying trick
+
+  For every p, store
+
+  ID(p) = r1h1(p) + r2h2(p) + · · · + rkhk (p) mod M.
+
+  Then indexing hash-function is g(p) = ID(p) mod TableSize.
+
+  ID is locality sensitive: depends on w-length cells on the v-lines.
+
+  Avoid computing Euclidean distance to all elements p in bucket; do it only for p: ID(p) =ID(q)
+
+
+  
+  
+  
+  Projection in Hypercube
 
 Randomized projection into Hypercube is a similar algorithmic technique to LSH. However, instead of L hash tables with their own AmplifiedHashFunction, our dataset is stored into the vertices of a Hypercube. Layers:
 
