@@ -44,7 +44,7 @@ Locality Sensitive Hashing is an algorithmic technique that hashes similar input
   
   
   
-  Projection in Hypercube
+  *Projection in Hypercube*
 
 Randomized projection into Hypercube is a similar algorithmic technique to LSH. However, instead of L hash tables with their own AmplifiedHashFunction, our dataset is stored into the vertices of a Hypercube. Layers:
 
