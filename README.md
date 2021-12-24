@@ -9,8 +9,11 @@ Locality Sensitive Hashing is an algorithmic technique that hashes similar input
 1) Create k h functions. Each of every one has 4 parts
   
   vector p: The vector that we want to store
+  
   vector v: A vector of d-dimensions, same as the input vectors. Each value is generated normally at the start of execution.
+  
   double t: Also generated at the start of execution but uniformly.
+  
   int w: "window". This is set as 650 in LSH/hash.cpp, line 21. Feel free to experiment.
 
   h(p) = floor ((p*v + t)/w))
@@ -26,14 +29,20 @@ g(p) =  [(r1h1(p) + r2h2(p) + · · · + rkhk (p)) mod M] mod TableSize where r 
 To summarize, when LSH is initialized, we have L hash tables where each one contains one instance of each of our items. Whenever a query item arrives, we hash it for every hash table and search for its nearest neighbors among the L buckets (one from each hash table).
 
 Querying trick
+
 For every p, store
+
 ID(p) = r1h1(p) + r2h2(p) + · · · + rkhk (p) mod M.
+
 Then indexing hash-function is g(p) = ID(p) mod TableSize.
+
 ID is locality sensitive: depends on w-length cells on the v-lines.
+
 Avoid computing Euclidean distance to all elements p in bucket; do it only for p: ID(p) =ID(q)
 
 
 Projection in Hypercube
+
 Randomized projection into Hypercube is a similar algorithmic technique to LSH. However, instead of L hash tables with their own AmplifiedHashFunction, our dataset is stored into the vertices of a Hypercube. Layers:
 
 1)HashFunction: This is the same class implemented in LSH, whenever an item comes as input, it is shifted and then the "h" formula is calculated on it.
