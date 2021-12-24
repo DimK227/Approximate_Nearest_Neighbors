@@ -41,7 +41,11 @@ Locality Sensitive Hashing is an algorithmic technique that hashes similar input
   Avoid computing Euclidean distance to all elements p in bucket; do it only for p: ID(p) =ID(q)
 
 
-  
+
+  **Compile & Run**
+
+A makefile is included in the repository. To compile just hit $ make . To delete the lsh binary file run $ make clean.
+All of the parameters can be configured with command line arguments. To execute you can use $ ./lsh -i <input_dataset> -q <query_dataset> -k <no_of_hash_functions> -L <no_of_hash_tables> -o <output_file_name> -N <number of nearest> -R <radius for range search>. There are default values (you may not provide them as arguments) for k (4), L (5), N (1), R(10000)
   
   
   **Projection in Hypercube**
@@ -55,3 +59,9 @@ Randomized projection into Hypercube is a similar algorithmic technique to LSH. 
 
 
 3)Hypercube: This is the final layer. A hypercube of dimension d' is created alongside d' HashFunctions and f. This hypercube is represented as an array of size 2d'. Whenever an item is inserted, it is first hashed by each HashFunction and then mapped to {0,1} by f. The result is a binary number of length d' (which is equivalent to a decimal number i.e. the index of the vertex in which the item will be inserted). The process is similar whenever a query item arrives, as it is hashed, then mapped. Once mapped, we have a starting vertex from which we want to start our search for near neighbors. However, we are not limited to only this vertex, it is possible to traverse nearby hypercube vertices (e.g. vertices with hamming distance of 1 from the starting vertex).
+
+
+  **Compile & Run**
+
+A makefile is included in the repository. To compile just hit $ make . To delete the lsh binary file run $ make clean.
+All of the parameters can be configured with command line arguments. To execute you can use $ ./lsh -d <input_dataset> -q <query_dataset> -k <no_of_hash_functions> -M <max_number_of_points_to_be_checked> -probes <max_number_of_probes_to_be_checked> -o <output_file_name> -N <number of nearest> -R <radius>. There are default values (you may not provide them as arguments) for k (4), M (10), probes (2), N(1), R(10000)  
